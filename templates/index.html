@@ -1,0 +1,751 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>VERDA — AI for a Greener Future</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+    <div class="brand">
+        <div class="brand-mark">V</div>
+
+        <div>
+            <h1>VERDA</h1>
+            <span>AI FOR A GREENER FUTURE</span>
+        </div>
+    </div>
+
+    <nav>
+
+        <button onclick="scrollToSection('ai')">
+            Ask Verda
+        </button>
+
+        <button onclick="scrollToSection('explore')">
+            Explore
+        </button>
+
+        <button onclick="scrollToSection('community')">
+            Community
+        </button>
+
+        <button onclick="openRoles()"
+                class="nav-role">
+            Login / Role
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <div class="eyebrow">
+            🌱 INTELLIGENT SUSTAINABILITY
+        </div>
+
+        <h2>
+            Make better choices.<br>
+            <span>Create real impact.</span>
+        </h2>
+
+        <p>
+            VERDA combines AI, citizen participation and
+            environmental action to create a greener future.
+        </p>
+
+        <div class="hero-actions">
+
+            <button class="primary-btn"
+                    onclick="scrollToSection('ai')">
+                Ask VERDA AI →
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="openRoles()">
+                Get Involved
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <div class="orb">🌍</div>
+
+        <h3>Small actions.</h3>
+
+        <p>
+            Meaningful change begins with what we do
+            every day.
+        </p>
+
+        <div class="mini-stats">
+
+            <div>
+                <strong>4</strong>
+                <span>Focus Areas</span>
+            </div>
+
+            <div>
+                <strong>AI</strong>
+                <span>Powered</span>
+            </div>
+
+            <div>
+                <strong>∞</strong>
+                <span>Impact</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     AI
+========================================================= -->
+
+<section id="ai" class="section">
+
+    <div class="section-heading">
+
+        <div>
+            <small>VERDA AI</small>
+
+            <h2>Your sustainability assistant.</h2>
+
+            <p>
+                Ask anything about waste, water, energy,
+                food or environmental problems.
+            </p>
+        </div>
+
+        <div class="ai-badge">
+            ● AI ONLINE
+        </div>
+
+    </div>
+
+
+    <div class="ai-box">
+
+        <textarea id="question"
+                  placeholder="Ask VERDA... e.g. How can I reduce plastic waste?"></textarea>
+
+        <button class="primary-btn"
+                onclick="askVerda()">
+            Ask Verda ✦
+        </button>
+
+    </div>
+
+
+    <div id="aiResponse"
+         class="response-card hidden">
+
+        <div class="response-title">
+            VERDA'S INSIGHT
+        </div>
+
+        <div id="answer"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EXPLORE
+========================================================= -->
+
+<section id="explore" class="section">
+
+    <div class="section-heading">
+
+        <div>
+            <small>EXPLORE</small>
+
+            <h2>Build greener habits.</h2>
+
+            <p>
+                Select a topic and VERDA will guide you.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="explore-grid">
+
+        <button class="eco-card waste"
+                onclick="quickAsk('How can I reduce, reuse and properly manage waste in my daily life?')">
+
+            <div class="card-icon">♻️</div>
+
+            <h3>Waste</h3>
+
+            <p>
+                Reduce waste and make better
+                disposal choices.
+            </p>
+
+            <span>Ask VERDA →</span>
+
+        </button>
+
+
+        <button class="eco-card water"
+                onclick="quickAsk('How can I save water at home and in my community?')">
+
+            <div class="card-icon">💧</div>
+
+            <h3>Water</h3>
+
+            <p>
+                Discover simple ways to
+                protect every drop.
+            </p>
+
+            <span>Ask VERDA →</span>
+
+        </button>
+
+
+        <button class="eco-card energy"
+                onclick="quickAsk('How can I reduce electricity and energy wastage in my daily life?')">
+
+            <div class="card-icon">⚡</div>
+
+            <h3>Energy</h3>
+
+            <p>
+                Use energy smarter and
+                reduce unnecessary consumption.
+            </p>
+
+            <span>Ask VERDA →</span>
+
+        </button>
+
+
+        <button class="eco-card food"
+                onclick="quickAsk('How can I reduce food waste and use food more sustainably?')">
+
+            <div class="card-icon">🍃</div>
+
+            <h3>Food</h3>
+
+            <p>
+                Reduce food waste and
+                make sustainable choices.
+            </p>
+
+            <span>Ask VERDA →</span>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ECO SCORE
+========================================================= -->
+
+<section class="score-section">
+
+    <div>
+
+        <small>YOUR ECO IMPACT</small>
+
+        <h2>
+            How green are your habits?
+        </h2>
+
+        <p>
+            Answer four quick questions and discover
+            your personal sustainability score.
+        </p>
+
+        <button class="primary-btn"
+                onclick="calculateScore()">
+            Calculate My Eco Score →
+        </button>
+
+    </div>
+
+
+    <div class="score-circle">
+
+        <strong id="scoreValue">—</strong>
+
+        <span>/100</span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CIVIC ACTION
+========================================================= -->
+
+<section id="action" class="section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <small>CITIZEN ACTION</small>
+
+            <h2>
+                See something? Make it visible.
+            </h2>
+
+            <p>
+                Help your community identify environmental
+                issues and encourage action.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="action-grid">
+
+        <button class="action-card yellow"
+                onclick="openShare()">
+
+            <span>🟡</span>
+
+            <h3>Share Something</h3>
+
+            <p>
+                Share a positive green action,
+                observation or idea.
+            </p>
+
+            <strong>Share →</strong>
+
+        </button>
+
+
+        <button class="action-card red"
+                onclick="openReport()">
+
+            <span>🔴</span>
+
+            <h3>Report a Problem</h3>
+
+            <p>
+                Report waste, pollution, water problems
+                or other environmental issues.
+            </p>
+
+            <strong>Report →</strong>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMMUNITY
+========================================================= -->
+
+<section id="community" class="section">
+
+    <div class="section-heading">
+
+        <div>
+
+            <small>VERDA COMMUNITY</small>
+
+            <h2>
+                Inspire. Share. Act.
+            </h2>
+
+            <p>
+                Sustainable living becomes stronger
+                when people do it together.
+            </p>
+
+        </div>
+
+        <button class="secondary-btn"
+                onclick="openShare()">
+            + Share Post
+        </button>
+
+    </div>
+
+
+    <div id="postsContainer"
+         class="posts-grid">
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ROLE SECTION
+========================================================= -->
+
+<section id="roles"
+         class="role-section hidden">
+
+    <div class="modal-card">
+
+        <button class="close-btn"
+                onclick="closeRoles()">
+            ×
+        </button>
+
+        <small>VERDA ACCESS</small>
+
+        <h2>
+            Choose your role
+        </h2>
+
+        <p>
+            Select how you want to participate.
+        </p>
+
+
+        <div class="role-grid">
+
+            <button onclick="selectRole('citizen')">
+
+                <span>🌱</span>
+
+                <strong>Citizen</strong>
+
+                <small>
+                    Share, report and explore
+                </small>
+
+            </button>
+
+
+            <button onclick="selectRole('admin')">
+
+                <span>👨‍💼</span>
+
+                <strong>Admin</strong>
+
+                <small>
+                    Review environmental reports
+                </small>
+
+            </button>
+
+
+            <button onclick="selectRole('officer')">
+
+                <span>👷</span>
+
+                <strong>Field Officer</strong>
+
+                <small>
+                    Handle assigned problems
+                </small>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CITIZEN PANEL
+========================================================= -->
+
+<section id="citizenPanel"
+         class="workspace hidden">
+
+    <div class="workspace-header">
+
+        <div>
+
+            <small>CITIZEN SPACE</small>
+
+            <h2>
+                Your actions can create impact.
+            </h2>
+
+        </div>
+
+        <button onclick="closeWorkspace()">
+            Close
+        </button>
+
+    </div>
+
+
+    <div class="workspace-grid">
+
+        <button onclick="openShare()">
+            🟡 Share Something
+        </button>
+
+        <button onclick="openReport()">
+            🔴 Report a Problem
+        </button>
+
+        <button onclick="scrollToSection('ai'); closeWorkspace();">
+            🤖 Ask VERDA
+        </button>
+
+        <button onclick="scrollToSection('community'); closeWorkspace();">
+            🌍 Community
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMIN PANEL
+========================================================= -->
+
+<section id="adminPanel"
+         class="workspace hidden">
+
+    <div class="workspace-header">
+
+        <div>
+
+            <small>ADMIN CONTROL</small>
+
+            <h2>
+                Environmental reports
+            </h2>
+
+            <p>
+                Review citizen reports and assign field officers.
+            </p>
+
+        </div>
+
+        <button onclick="closeWorkspace()">
+            Close
+        </button>
+
+    </div>
+
+
+    <div id="adminReports"
+         class="reports-list">
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OFFICER PANEL
+========================================================= -->
+
+<section id="officerPanel"
+         class="workspace hidden">
+
+    <div class="workspace-header">
+
+        <div>
+
+            <small>FIELD OFFICER</small>
+
+            <h2>
+                Assigned environmental problems
+            </h2>
+
+            <p>
+                Review assignments and update progress.
+            </p>
+
+        </div>
+
+        <button onclick="closeWorkspace()">
+            Close
+        </button>
+
+    </div>
+
+
+    <div id="officerReports"
+         class="reports-list">
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SHARE MODAL
+========================================================= -->
+
+<div id="shareModal"
+     class="modal hidden">
+
+    <div class="modal-card">
+
+        <button class="close-btn"
+                onclick="closeShare()">
+            ×
+        </button>
+
+        <small>🟡 SHARE SOMETHING</small>
+
+        <h2>
+            Inspire your community
+        </h2>
+
+        <textarea id="postContent"
+                  placeholder="What green action or idea would you like to share?"></textarea>
+
+        <input type="file"
+               id="postPhoto"
+               accept="image/*">
+
+        <button class="primary-btn"
+                onclick="createPost()">
+            Publish Post
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     REPORT MODAL
+========================================================= -->
+
+<div id="reportModal"
+     class="modal hidden">
+
+    <div class="modal-card report-modal">
+
+        <button class="close-btn"
+                onclick="closeReport()">
+            ×
+        </button>
+
+        <small>🔴 ENVIRONMENTAL REPORT</small>
+
+        <h2>
+            Report a problem
+        </h2>
+
+        <p>
+            Tell VERDA what is happening in your area.
+        </p>
+
+
+        <input id="reportTitle"
+               placeholder="Problem title">
+
+
+        <textarea id="reportDescription"
+                  placeholder="Describe the problem..."></textarea>
+
+
+        <input id="reportLocation"
+               placeholder="Location / Area">
+
+
+        <button class="location-btn"
+                onclick="getLocation()">
+            📍 Use My Current Location
+        </button>
+
+
+        <div id="locationStatus"
+             class="location-status">
+            Location not selected
+        </div>
+
+
+        <input type="file"
+               id="reportPhoto"
+               accept="image/*">
+
+
+        <button class="primary-btn"
+                onclick="submitReport()">
+            Submit Red Report
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        VERDA
+    </div>
+
+    <p>
+        AI FOR A GREENER FUTURE
+    </p>
+
+    <span>
+        © 2026 Sundaravally. All Rights Reserved.
+    </span>
+
+</footer>
+
+</main>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
